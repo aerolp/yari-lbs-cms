@@ -1,0 +1,18 @@
+<script type="application/ld+json">
+{ "@context" : "http://schema.org",
+  "@type" : "Organization",
+  "name" : "Yari Labs, Ltd",
+  "url" : "https://yarilabs.com",
+  "telephone": "+351 253 776 740",
+  "foundingDate": "2017-04-19",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Braga",
+    "addressRegion": "Braga",
+    "postalCode": "4700-307",
+    "streetAddress": "Rua do Capelistas, 30, 3rd floor, Room I"
+  },
+  "logo": "{{ site.logo | prepend:"/" | prepend: site.url }}",
+  "sameAs" : {{ site.social | jsonify }}
+}
+</script>

@@ -5,39 +5,121 @@
 # yourself editing this file very often, consider using Jekyll's data files
 # feature for the data you need to update frequently.
 #
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: Your awesome title
+# settings
+title: Yari Labs
 email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+masthead: "Software <i class=\"ellipsis vertical icon\"></i> Consulting <i class=\"ellipsis vertical icon\"></i> Coaching"
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+url: yarilabs-fix.netlify.com # the base hostname & protocol for your site, e.g. http://example.com
+logo: /assets/img/yarilabs-logo.svg
+
+
+twitter_username: yarilabs
+github_username:  yarilabs
+googlemap: https://goo.gl/maps/RLpub52RD8H2
+googlemap_uk: https://goo.gl/maps/zdd7Qxv6WcP2
+
+address: Rua dos Capelistas, 30 3rd Floor | 86-90 Paul Street, 3rd Floor, London, United Kingdom, EC2A 4NE
+phone:  351 253776740
+ukphone: 44 7445007797
 
 # Build settings
-markdown: kramdown
-theme: minima
+maRkdown: kramdown
+permalink: :title
+
+# Handling Reading
+safe:         false
+exclude:      [
+  ".git",
+  ".svn",
+  "assets/semantic",
+  "node_modules",
+  "gulpfile.js",
+  "semantic.json",
+  "package.json",
+  "README.md",
+  "assets/raw",
+  ".gulp-scss-cache",
+  "assets/css/lightbox.min.css",
+  "assets/css/main.css",
+  "assets/css/main.scss",
+  "assets/css/semantic.css",
+  "assets/css/semantic.min.css",
+  "assets/js/isotope.pkgd.js",
+  "assets/js/jquery.min.js",
+  "assets/js/lightbox.min.js",
+  "assets/js/lightbox.min.map",
+  "assets/js/semantic.js",
+  "assets/js/site.js",
+  "_plugins/amp_filter.rb"
+]
+encoding:     "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
 plugins:
+  - jekyll-gist
+  - jekyll-sitemap
+  # - jekyll-admin
+  - jekyll-paginate-v2
   - jekyll-feed
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+
+pagination:
+  enabled: true
+  per_page: 7
+  permalink: "page:num/"
+  limit: 1
+  sort_field: 'date'
+  sort_reverse: true
+  collection: 'posts'
+
+tag_page_dir: tag
+
+tag_feed_dir: tag
+tag_page_layout: tag_page
+tag_feed_layout: tag_feed
+
+social: [ "https://twitter.com/yarilabs", "https://www.facebook.com/yarilabs", "https://plus.google.com/111792819110493287001/about", "https://www.linkedin.com/company/yarilabs", "https://play.google.com/store/apps/developer?id=Yari+Labs+Ltd", "", "https://www.youtube.com/channel/UCrO53DBguJlnmbWZaXo2kvg", "https://github.com/yarilabs"]
+
+compress_html:
+  clippings: [div, p, ul, td, h1, h2]
+  comments: ["<!-- ", " -->"]
+  endings: []
+  ignore:
+    envs: [local]
+  blanklines: true
+  profile: false
+  startings: []
+
+ampdir: amp
+
+
+autopages:
+
+  # Site-wide kill switch, disable here and it doesn't run at all
+  enabled: true
+
+  # Category pages, omit entire config element to disable
+  categories:
+    # Optional, the list of layouts that should be processed for every category found in the site
+    layouts:
+      - 'default.html'
+    # Optional, the title that each category paginate page should get (:cat is replaced by the Category name)
+    title: 'Posts in category :cat'
+    # Optional, the permalink for the  pagination page (:cat is replaced),
+    # the pagination permalink path is then appended to this permalink structure
+    permalink: '/category/:cat'
+
+  # Collection pages, omit to disable
+  collections:
+    layouts:
+      - 'default.html'
+    title: 'Posts in collection :coll' # :coll is replaced by the collection name
+    permalink: '/collection/:coll'
+
+  # Tag pages, omit to disable
+  tags:
+    layouts:
+      - 'default.html'
+    title: 'Posts tagged with :tag' # :tag is replaced by the tag name
+    permalink: '/tag/:tag'

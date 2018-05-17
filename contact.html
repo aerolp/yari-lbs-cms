@@ -1,0 +1,25 @@
+---
+layout: default
+permalink: /about/contact
+title: Contact Us
+---
+
+<h1>Contact Us</h1>
+
+<h2>Do you have a product you'd like to launch or need an extra pair of hands? Get in touch! </h2>
+<div class="ui divider big hidden"></div>
+<div class="ui grid stackable text">
+  <div class="eight wide column">
+    {% include contact-detail.html %}
+    <br>
+    <!--i class="lock green icon" title="GPG Fingerprint"></i><span title="GPG Fingerprint">{{site.pgp}}</span-->
+    {% include social.html %}
+  </div>
+  <div class="eight wide column">
+    <a href="{{site.googlemap}}" target="_blank">
+      <img src="/assets/img/yarilabs-contact-us.png" alt="{{ page.title}} Braga" class="ui image fluid rgb"></a>
+    <a href="{{site.googlemap_uk}}" target="_blank"><br>
+      <img src="/assets/img/yarilabs-contact-us-uk.jpg" alt="{{ page.title}} London" class="ui image fluid rgb"></a>
+    </div>
+</div>
+<div class="ui divider big hidden"></div>

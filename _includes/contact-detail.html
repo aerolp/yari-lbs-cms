@@ -1,0 +1,22 @@
+<div itemscope itemtype="http://schema.org/Organization">
+  <a itemprop="url" href="https://yarilabs.com"><div itemprop="name"><strong>{{ site.title }}</strong></div>
+  </a>
+  <img src="{{ site.url | append: '/' | append: site.logo}}" itemprop="image" class="ohidden" alt="{{ site.title }}"/>
+  <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+    <span itemprop="streetAddress">{{site.data.contact.detail.pt.street}}</span><br>
+    <span itemprop="postalCode">{{site.data.contact.detail.pt.postal}}</span> - <span itemprop="addressLocality">{{site.data.contact.detail.pt.cidade}}</span><br>
+    <span itemprop="addressCountry">{{site.data.contact.detail.pt.pais}}</span><br>
+    <i class="call icon"></i><a itemprop="telephone" href="tel:+{{ site.phone | escape | remove: " " }}">+{{ site.phone }}</a><br>
+  </div>
+  <br>
+  <hr class="hr_color_width" align="left">
+  <br>
+  <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+    <span itemprop="streetAddress">{{site.data.contact.detail.en.street}}</span><br>
+    <span itemprop="postalCode">{{site.data.contact.detail.en.postal}}</span> - <span itemprop="addressLocality">{{site.data.contact.detail.en.cidade}}</span><br>
+    <span itemprop="addressCountry">{{site.data.contact.detail.en.pais}}</span><br>
+    <i class="call icon"></i><a itemprop="telephone" href="tel:+{{ site.ukphone | escape | remove: " " }}">+{{ site.ukphone }}</a>
+  </div>
+  <br><br>
+  <span itemprop="email" class="yari_yellow"><i class="send outline icon"></i>{% include email.html param="link" variable-param=page.variable %}</span><br>
+</div>

@@ -1,0 +1,112 @@
+---
+layout: default
+title: Blogs - Explaining Blockchain, Elm, ES6 and what not.
+excerpt: "Blogs - Explaining Blockchain, Ethereum, React, Elm, Elixir, ES6 and what not."
+class: blog_page
+pagination:
+  enabled: true
+  tag: blog
+---
+
+{% include bloghead.html %}
+
+<div class="ui equal width stackable two column grid">
+  {% assign blog = paginator.posts | where: "class", "blog" %}
+
+  <!--|====================| MAIN BLOG POST |================================|-->
+  {% for page in blog limit:1 %}
+    <div class="column eight wide" align="left" >
+      <a href="{{page.url}}" title="{{page.title}}" class="main_imgs_container">
+        <img src="../../{{page.image_path}}" alt="" class="main_cropped_img" >      
+        <div class="main_mi">
+          <p class="main_text_img">{{page.title}}</p>
+          <div class="main_sub_header">{{page.excerpt | strip_html |  truncatewords: 20}}</div>     
+
+          {% include blog-avatar.html %}       
+          <h5 class="main_texto">
+            <span class="main_author"><span class="remove_icon"><i class="user icon"></i></span>by {{page.author}}</span> 
+          </h5>
+          <h5 class="main_texto2" >
+            <span class="main_line">|</span> 
+            <span class="main_hour"><span class="remove_icon"><i class="clock icon"></i></span>on {{page.date |  date_to_long_string  }}</span>
+          </h5>
+        </div>
+      </a>
+      <hr class="main_hr">
+      <span class="main_pre_posts">Previous Posts <i class="chat icon"></i></span>
+    </div>
+  {% endfor %}
+  <!--|==================| end MAIN BLOG POST |==============================|-->
+
+
+  <div class="ui hidden divider"></div>  <!-- Espaço em branco -->  
+
+  <!--|====================| older BLOG POST |================================|-->
+  {% for page in blog offset:1 %}
+    <div class="column eight wide" align="left" >
+        <!--<hr align="left" width="80%">
+        <h2 class="ui header large">
+          <a href="{{page.url}}" title="{{page.title}}" style="color: #1b1c1d!important;"></a>{{page.title}}</a>
+          <h5 style="color: #ffcc00!important;margin-top: -10px;">{{page.date |  date_to_long_string  }}</h5>
+          <div class="sub header">{{page.excerpt | strip_html |  truncatewords: 40}}</div>
+        </h2>
+        <a href="{{page.url}}" title="{{page.title}}" class="ui black button" style="background-color: #444!important;">Read More...</a>-->
+
+        <a href="{{page.url}}" title="{{page.title}}" class="imgs_container">
+            <img src="../../{{page.image_path}}" alt="" class="cropped_img" >      
+            <div class="mid">
+              <p class="text_img">{{page.title}}</p>
+              <div class="sub_header">{{page.excerpt | strip_html |  truncatewords: 15}}</div>            
+              <h5 class="texto"><i class="user icon"></i>by {{page.author}} | <i class="clock icon"></i>on {{page.date |  date_to_long_string  }}</h5>
+            </div>
+        </a>
+    </div>
+  {% endfor %}
+</div>
+  <!--|==================| end older BLOG POST |==============================|-->
+
+
+<!-- Espaços em branco -->
+<div class="ui divider hidden big"></div>
+<div class="ui divider hidden big"></div>
+
+<!-- Paginator -->
+<div class="ui grid">
+    <div class="pagination" style="float: none;">
+      <!--{% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path }}" class="ui left small labeled icon floated button"><i class="left arrow icon"></i>Previous</a>
+      {% else %}
+      <span class="ui left small labeled icon floated button"><i class="left arrow icon"></i>Previous</span>
+      {% endif %}
+      <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+      {% if paginator.next_page  %}
+      <a href="{{ paginator.next_page_path }}" class="ui right floated right labeled icon small button">Next<i class="right arrow icon"></i></a>
+      {% else %}
+      <span class="ui right floated right labeled icon small button">Next<i class="right arrow icon"></i></span>
+      {% endif %}-->
+      
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path }}" class="ui left small labeled icon floated button" style="background: #ffcc00 none;"><i class="left arrow icon"></i>P&aacute;gina anterior</a>
+      {% else %}
+        <span class="ui left small labeled icon floated button" style="background: #ffcc00 none;"><i class="left arrow icon"></i>P&aacute;gina anterior</span>
+      {% endif %}
+      <span class="page_number ">{{ paginator.page }} of {{ paginator.total_pages }}</span>
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}" class="ui right floated right labeled icon small button" style="background: #ffcc00 none;">Pr&oacute;xima p&aacute;gina<i class="right arrow icon"></i></a>
+      {% else %}
+        <span class="ui right floated right labeled icon small button" style="background: #ffcc00 none;">Pr&oacute;xima p&aacute;gina<i class="right arrow icon"></i></span>
+      {% endif %}
+    </div>
+</div>
+
+<script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+</script>

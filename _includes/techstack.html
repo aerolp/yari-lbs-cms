@@ -1,0 +1,43 @@
+<div class="ui container">
+  <div class="ui hidden divider"></div>
+  <h2>Our technology stack</h2>
+  <div class="ui section divider"></div>
+  <h3>We love to work with bleeding edge  <a href="/about/technology">technology</a> with a tendency to move to the functional side of programming </h3>
+  <div class="ui section divider"></div>
+
+  {% for techstack in site.data.technology.techstack %}
+  <div class="ui equal width stackable grid">
+    <div class="column">
+      <h2 class="ui header">
+        <div class="content">
+          {{techstack.stack1.title}}
+          <div class="sub header inverted">
+            {{techstack.stack1.text}}
+           </div>
+        </div>
+      </h2>
+    </div>
+    <div class="column">
+      <h2 class="ui header">
+        <div class="content">
+        {{techstack.stack2.title}}
+        <div class="sub header inverted">
+            {{techstack.stack2.text}}
+        </div>
+        </div>
+      </h2>
+    </div>
+    <div class="column">
+      <h2 class="ui header">
+        <div class="content">
+          {{techstack.stack3.title}}
+          <div class="sub header inverted">
+              {{techstack.stack3.text}}
+          </div>
+        </div>
+      </h2>
+    </div>
+  </div>
+  {% endfor %}
+  <div class="ui hidden big divider"></div>
+</div>

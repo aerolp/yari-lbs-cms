@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<header class="post-header">
+  <h1 class="post-title" id="title">{{ page.title }}</h1>
+</header>
+
+<div class="ui grid stackable">
+  <div class="ui eleven wide column text page-text">
+    {% if page.subtitle %}
+      <h2 class="post-subtitle" itemprop="name headline">{{ page.subtitle }}</h2>
+    {% endif %}
+
+    {% if page.meta %}
+      <img class="ui fluid image" id="tgiv_cover" src="{{ page.meta | prepend:"/assets/img/blog/" | prepend: site.baseurl }}" alt="{{ page.title }}">
+      <div class="ui hidden divider"></div>
+    {% endif %}
+    
+    <!-- Caso o autor introduzido no post existir no ficheiro "authors.yml", aparecera um texto de quem/quando/onde foi publicado -->
+    {% include author.html %} 
+    <article style="margin-bottom:40px;">
+      {{ content }}
+    </article>
+
+    {% include comments.html %} <!-- Caixa de aviso (grey box) -->
+  </div>
+  <div class="ui five wide column">
+    <div class="ui hidden divider"></div>
+    {% include blog-tags.html %}
+    {% include recentposts.html %}
+    {% include authorbig.html %}
+  </div>
+</div>

@@ -1,0 +1,9 @@
+{% if page.url == "/about/portfolio" %}
+<script src="/assets/js/bundle-work.min.js"></script>
+{% elsif page.layout == "work" %}
+<script src="/assets/js/bundle-work-lightbox.min.js"></script>
+{% elsif page.layout == 'imageblog' %}
+<script src="/assets/js/bundle-work-lightbox.min.js"></script>
+{% else %}
+<script src="/assets/js/bundle-front.min.js"></script>
+{% endif %}

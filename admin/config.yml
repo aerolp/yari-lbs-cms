@@ -1,0 +1,451 @@
+publish_mode: editorial_workflow
+media_folder: "assets/uploads"
+
+backend:
+  name: git-gateway
+  repo: https://github.com/sites-yari/yarilabs-netlify
+  branch: master # Branch to update (optional; defaults to master)
+
+collections:
+#====================| POSTS |===================================================|  
+  - name: "blogs" #-----| Blogs |------------------------------|
+    label: "Blogs"
+    folder: "_posts/blogs"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Titulo", name: "title", widget: "string" }
+      - { label: "Data de publicação", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "TAG", name: "tag", widget: "hidden", default: "[blog]" }
+      - { label: "Autor", name: "author", widget: "string" }
+      - { label: "Endereço / Link", name: "permalink", widget: "string", default: "/blogs/(nome)" }
+      - { label: "Class", name: "class", widget: "hidden", default: "blog" }
+      - { label: "Meta", name: "meta", widget: "hidden", default: "no info" }
+      - { label: "SubTitulo", name: "subtitle", widget: "string", default: "" }
+      - { label: "Cover", name: "image_path", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      
+  - name: "work" #-----| Artigos |-------------------------------|
+    label: "Portfolio / work"
+    folder: "_posts/work"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "work" }
+      - { label: "Titulo", name: "title", widget: "string" }
+      - { label: "Subtitulo", name: "subtitle", widget: "string" }
+      - { label: "Data de Publicação", name: "data", widget: "datetime", format: "DD-MM-YYYY" }
+      - { label: "Categorias", name: "categories", widget: "hidden"}
+      - { label: "Imagems", name: "images", widget: "hidden" }
+      - { label: "Endereço / Link", name: "permalink", widget: "string", default: "/work/(nome)" }
+      - { label: "Excerpt", name: "excerpt", widget: "string" }
+      - { label: "Cover", name: "image_path", widget: "image" }
+      - label: "Work"
+        name: "work" 
+        widget: "object"
+        fields:
+          - { label: "Nome", name: "name" , widget: "string" }
+          - { label: "URL", name: "url" , widget: "string" }
+          - { label: "Cliente", name: "client" , widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "paginas" #|=====================| PÁGINAS MD / HTML |====================================================|
+    label: "Páginas Web"
+    editor:
+      preview: true
+    files:
+      - name: "about" #-----| About Us |------------------------------|
+        label: "About Us"
+        file: "/about.md"
+        description: Página sobre a empresa
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/about/yarilabs" }
+          - { label: "Title", name: "title", widget: "hidden", default: "About Us" }
+          - { label: "Date", name: "date", widget: "hidden", default: "2017-08-01 11:19:48 +0530" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "careers" #-----| Careers |------------------------------|
+        label: "Careers"
+        file: "/careers.md"
+        description: Página sobre a carreira
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/about/careers" }
+          - { label: "Title", name: "title", widget: "hidden", default: "Careers" }
+          - { label: "Date", name: "date", widget: "hidden", default: "2017-08-01 00:00:00 +0530" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "elixir-developer-consultant" #-----| Elixir developers |------------------------------|
+        label: "Elixir Developer Consultant"
+        file: "/elixir-developer-consultant.md"
+        description: Página sobre Elixir Developer
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/careers/elixir-developer" }
+          - { label: "Title", name: "title", widget: "hidden", default: "Software Engineer-Elixir" }
+          - { label: "Date", name: "date", widget: "hidden", default: "2017-08-01 00:00:00 +0530" }
+          - { label: "ptype", name: "ptype", widget: "hidden", default: "career" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "internship" #-----| Internship |------------------------------|
+        label: "Internship"
+        file: "/internship.md"
+        description: Página sobre o estágio
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/careers/internship" }
+          - { label: "Title", name: "title", widget: "hidden", default: "Internship Program" }
+          - { label: "Date", name: "date", widget: "hidden", default: "2016-06-29 11:19:48 +0530" }
+          - { label: "Excerpt", name: "excerpt", widget: "hidden", default: "career" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "blockchain" #-----| Consulting & Development |------------------------------|
+        label: "Consulting & Development"
+        file: "/blockchain.md"
+        description: Página sobre consulting & development
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/consulting/company-consulting" }
+          - { label: "Title", name: "title", widget: "hidden", default: "Consulting & Development" }
+          - { label: "Date", name: "date", widget: "hidden", default: "2016-06-13 11:19:48 +0530" }
+          - { label: "Excerpt", name: "excerpt", widget: "hidden", default: "Consulting and development services for companies." }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "smart-contract" #-----| Product Development |------------------------------|
+        label: "Product Development"
+        file: "/smart-contract.md"
+        description: Página sobre Product Development
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/consulting/product-development" }
+          - { label: "Title", name: "title", widget: "hidden", default: "Product Development" }
+          - { label: "Date", name: "date", widget: "hidden", default: "2017-02-27 11:19:48 +0530" }
+          - { label: "Excerpt", name: "excerpt", widget: "hidden", default: "Product Development on Ethereum Blockchain using Solidity" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "open-source" #-----| Open Source |------------------------------|
+        label: "Open Source"
+        file: "/open-source.md"
+        description: Página sobre o Open Source
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/community" }
+          - { label: "Title", name: "title", widget: "hidden", default: "Community" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "comunidade" #-----| Comunity |------------------------------|
+        label: "Community"
+        file: "/comunidade.md"
+        description: Página sobre a Comunidade
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/open-source" }
+          - { label: "Title", name: "title", widget: "hidden", default: "Open Source" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "data" #|=====================| DATA |====================================================|
+    label: "Data"
+    editor:
+      preview: true
+    files:
+      - name: "author" #|-------------------Author 
+        label: "Autor"
+        file: "_data/authors.yml"
+        description: Membros da Yarilabs
+        fields:
+          - label: "Emanuel"
+            name: emanuel
+            widget: object
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Desig", name: "desig", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Bio", name: "bio", widget: "string" }
+              - { label: "Linked In", name: "linkedin", widget: "string" }
+              - { label: "Github", name: "github", widget: "string" }
+              - { label: "Web", name: "web", widget: "string" }
+              - { label: "Twitter", name: "twitter", widget: "string" }
+          - label: "Filipe"
+            name: filipe
+            widget: object
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Desig", name: "desig", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Bio", name: "bio", widget: "string" }
+              - { label: "Linked In", name: "linkedin", widget: "string" }
+              - { label: "Github", name: "github", widget: "string" }
+              - { label: "Web", name: "web", widget: "string" }
+              - { label: "Twitter", name: "twitter", widget: "string" }
+          - label: "Helder"
+            name: helder
+            widget: object
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Desig", name: "desig", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Bio", name: "bio", widget: "string" }
+              - { label: "Linked In", name: "linkedin", widget: "string" }
+              - { label: "Github", name: "github", widget: "string" }
+              - { label: "Web", name: "web", widget: "string" }
+              - { label: "Twitter", name: "twitter", widget: "string" }
+          - label: "Ricardo"
+            name: ricardo
+            widget: object
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Desig", name: "desig", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Bio", name: "bio", widget: "string" }
+              - { label: "Linked In", name: "linkedin", widget: "string" }
+              - { label: "Github", name: "github", widget: "string" }
+              - { label: "Web", name: "web", widget: "string" }
+              - { label: "Twitter", name: "twitter", widget: "string" }
+          - label: "Victor"
+            name: victor
+            widget: object
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Desig", name: "desig", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Bio", name: "bio", widget: "string" }
+              - { label: "Linked In", name: "linkedin", widget: "string" }
+              - { label: "Github", name: "github", widget: "string" }
+              - { label: "Web", name: "web", widget: "string" }
+              - { label: "Twitter", name: "twitter", widget: "string" }
+          - label: "Xavier"
+            name: xavier
+            widget: object
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Desig", name: "desig", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Bio", name: "bio", widget: "string" }
+              - { label: "Linked In", name: "linkedin", widget: "string" }
+              - { label: "Github", name: "github", widget: "string" }
+              - { label: "Web", name: "web", widget: "string" }
+              - { label: "Twitter", name: "twitter", widget: "string" }
+      - name: "team" #|------------- Equipa
+        label: "Team"
+        file: "_data/team.yml"
+        description: Membros da Yarilabs
+        fields:
+          - label: Team
+            name: team
+            widget: list
+            fields:
+              - { label: "Nome", name: "name", widget: "string" }
+              - { label: "Desig", name: "desig", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Bio", name: "bio", widget: "string" }
+              - { label: "Linked In", name: "linkedin", widget: "string" }
+              - { label: "Github", name: "github", widget: "string" }
+              - { label: "Web", name: "web", widget: "string" }
+              - { label: "Twitter", name: "twitter", widget: "string" }
+            
+      - name: social #|------------ Social
+        label: Paginas sociais
+        file: "_data/social.yml"
+        description: Links e icon das paginas sociais
+        fields:
+          - label: Home Social
+            name: homesocial
+            widget: object
+            fields:
+              - label: Gitlab
+                name: gitlab
+                widget: object
+                fields:
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+                  - { label: "Icon / logo", name: "icon", widget: "string" }
+              - label: Twitter
+                name: twitter
+                widget: object
+                fields:
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+                  - { label: "Icon / logo", name: "icon", widget: "string" }
+              - label: Google
+                name: google
+                widget: object
+                fields:
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+                  - { label: "Icon / logo", name: "icon", widget: "string" }
+              - label: Linked In
+                name: linkedin
+                widget: object
+                fields:
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+                  - { label: "Icon / logo", name: "icon", widget: "string" }
+              - label: Feed xml
+                name: feed_xml
+                widget: object
+                fields:
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+                  - { label: "Icon / logo", name: "icon", widget: "string" }
+          - label: Social
+            name: social
+            widget: object
+            fields:
+              - label: Gitlab
+                name: gitlab
+                widget: object
+                fields:
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+                  - { label: "Icon / logo", name: "icon", widget: "string" }
+              - label: Twitter
+                name: twitter
+                widget: object
+                fields:
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+                  - { label: "Icon / logo", name: "icon", widget: "string" }
+              - label: Google
+                name: google
+                widget: object
+                fields:
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+                  - { label: "Icon / logo", name: "icon", widget: "string" }
+              - label: Linked In
+                name: linkedin
+                widget: object
+                fields:
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+                  - { label: "Icon / logo", name: "icon", widget: "string" }
+              - label: Marker
+                name: marker
+                widget: object
+                fields:
+                  - { label: "Endereço / Link", mame: "link", widget: "string" }
+                  - { label: "Icon / logo", mame: "icon", widget: "string" }
+              - label: Feed xml
+                name: feed_xml
+                widget: object
+                fields:
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+                  - { label: "Icon / logo", name: "icon", widget: "string" }
+      - name: technology #|------------ Technologies
+        label: Technologias
+        file: "_data/technology.yml"
+        description: Info das technologies
+        fields:
+          - label: Linguagens de Programação
+            name: programming
+            widget: list
+            fields:
+              - label: Stack1
+                name: stack1
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Imagem / logo", name: "img", widget: "image" }
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+              - label: Stack2
+                name: stack2
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Imagem / logo", name: "img", widget: "image" }
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+              - label: Stack3
+                name: stack3
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Imagem / logo", name: "img", widget: "image" }
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+          - label: Web development e mobile frameworks
+            name: web
+            widget: list
+            fields:
+              - label: Stack1
+                name: stack1
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Imagem / logo", name: "img", widget: "image" }
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+              - label: Stack2
+                name: stack2
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Imagem / logo", name: "img", widget: "image" }
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+              - label: Stack3
+                name: stack3
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Imagem / logo", name: "img", widget: "image" }
+                  - { label: "Endereço / Link", name: "link", widget: "string" }
+          - label: Index Info
+            name: index
+            widget: list
+            fields:
+              - label: info1
+                name: info1
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Texto", name: "text", widget: "string" }
+              - label: info2
+                name: info2
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Texto", name: "text", widget: "string" }
+          - label: Technology stack index
+            name: techstack
+            widget: list
+            fields:
+              - label: Stack1
+                name: stack1
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Texto", name: "text", widget: "string" }
+              - label: Stack2
+                name: stack2
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Texto", name: "text", widget: "string" }
+              - label: Stack3
+                name: stack3
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Texto", name: "text", widget: "string" }
+      - name: consulting #|------------ Consulting
+        label: Páginas Consulting
+        file: "_data/consulting.yml"
+        description: Textos das areas pretas 
+        fields:
+          - label: Consulting & Development
+            name: consulting_development
+            widget: list
+            fields:
+              - label: info1
+                name: info1
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Texto", name: "text", widget: "string" }
+              - label: info2
+                name: info2
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Texto", name: "text", widget: "string" }
+          - label: Product Development
+            name: product_development
+            widget: list
+            fields:
+              - label: info1
+                name: info1
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Texto", name: "text", widget: "string" }
+              - label: info2
+                name: info2
+                widget: object
+                fields: 
+                  - { label: "Titulo", name: "title", widget: "string" }
+                  - { label: "Texto", name: "text", widget: "string" }

@@ -1,0 +1,100 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFCC00"/>
+  {% if page.title %}
+    {% assign pageTitle = page.title %}
+  {% else %}
+    {% assign pageTitle = site.title %}
+  {% endif %}
+
+  {% if page.permalink != 'index.html' %}
+    {% assign pageTitle = page.title | append: ' λ ' | append: site.title%}
+  {% endif %}
+
+  {% if page.grouptype == 'tag' %}
+    {% assign thistag = page.tag | replace: " ", "" %}
+    {% assign pageTitle = page.tag | append: " Articles Tagged #" | append: thistag %}
+  {% elsif page.grouptype == 'category' %}
+    {% assign thiscat = page.category | replace: " ", "" %}
+    {% assign pageTitle = page.category | append: " Articles in Category #" | append: thiscat %}
+  {% endif %}
+
+  {% if page.url == '/' %}
+    {% assign pageTitle = site.title | append: " - Professional Consulting and Product Development" %}
+  {% endif %}
+
+  {% if page.layout == 'blog' %}
+    {% assign hashtag = page.tag[0] | replace: " ", "" %}
+    {% assign pageTitle = page.title | append: " #" | append: hashtag %}
+  {% endif %}
+
+  <title>{{ pageTitle | trim }}</title>
+
+  {% if page.content %}
+    {% assign meta = page.content | strip_html | strip_newlines | strip %}
+  {% else %}
+    {% assign meta = site.masthead %}
+  {% endif %}
+
+  {% if page.url contains '/blogs/' %}
+    {% assign meta = "Blogs - Functional programming languages, Elixir, Elm, ES6, javascript and what not." %}
+  {% endif %}
+
+  {% if page.excerpt %}
+    {% assign meta = page.excerpt | strip_html | strip_newlines | strip %}
+  {% else %}
+    {% assign meta = page.content | strip_html | strip_newlines | strip %}
+  {% endif %}
+
+  {% if page.grouptype == 'tag' %}
+    {% assign meta = page.tag | append: ", all posts under Tag " | append: page.tag %}
+  {% elsif page.grouptype == 'category' %}
+    {% assign meta = page.category | append: ", all posts under Category " | append: page.category %}
+  {% endif %}
+
+  {% if page.url == "/" %}
+    {% assign meta = site.masthead | prepend: "We are Elixir, Ruby, mobile and product development experts. We can convert your idea into a product or we can help your team on an existing project. " | strip %}
+  {% endif %}
+
+  {% assign cleanMeta = meta | slugify | replace: "-", " " | capitalize | truncate: 160, "" %}
+
+  <meta name="description" content="{{ cleanMeta }}">
+
+  {% include meta-og-schema.html %}
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Merriweather+Sans:300,400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); </script>
+
+  {% if page.url == "" %}
+  <link href="{{ "/assets/css/bundle-work.min.css" | prepend: site.baseurl }}" rel="stylesheet">
+  {% elsif page.layout == "work" %}
+  <link href="{{ "/assets/css/bundle-work-lightbox.min.css" | prepend: site.baseurl }}" rel="stylesheet">
+  {% elsif page.layout == "imageblog" %}
+  <link href="{{ "/assets/css/bundle-work-lightbox.min.css" | prepend: site.baseurl }}" rel="stylesheet">
+  {% else %}
+  <link href="{{ "/assets/css/bundle-front.min.css" | prepend: site.baseurl }}" rel="stylesheet">
+  {% endif %}
+
+
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="amphtml" href="{{ page.permalink | prepend: '/amp' | prepend: site.baseurl | prepend: site.url }}">
+
+  <!-- netlify -->
+  <script src="https://identity-js.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  {% include service_worker.html %}
+  {% include favicons.html %}
+</head>

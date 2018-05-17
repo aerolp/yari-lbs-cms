@@ -1,0 +1,38 @@
+<div class="ui center aligned grid">
+    <i class="caret down huge cuticon icon"></i>
+</div>
+
+<div class="ui fluid container techs" style="width: 100%!important;">
+    <div class="ui container">
+        <div class="ui equal width relaxed stackable grid">
+            {% for product-development in site.data.consulting.product_development %}
+            <div class="equal width row">
+                <div class="column">
+                    <div class="ui header inverted">
+                        <div class="tech_style"> 
+                            <div class="content">
+                                <h2>{{product-development.info1.title}}</h2>
+                                <div class="sub header inverted">
+                                    {{product-development.info1.text}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                        
+                <div class="column">
+                    <div class="ui header inverted">
+                        <div class="tech_style">
+                            <div class="content">
+                                <h2>{{product-development.info2.title}}</h2>
+                                <div class="sub header inverted" >
+                                    {{product-development.info2.text}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
