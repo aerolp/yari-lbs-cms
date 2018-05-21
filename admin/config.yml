@@ -3,7 +3,7 @@ media_folder: "assets/uploads"
 
 backend:
   name: git-gateway
-  repo: https://github.com/sites-yari/yarilabs-netlify
+  repo: https://github.com/aerolp/yari-lbs-cms
   branch: master # Branch to update (optional; defaults to master)
 
 collections:
